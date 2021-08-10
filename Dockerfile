@@ -1,5 +1,5 @@
 # Use node Docker image, version 16-alpine
-FROM quay.io/upslopeio/node-alpine
+FROM quay.io/ibmgaragecloud/node:lts-stretch
 
 # From the documentation, "The WORKDIR instruction sets the working directory for any
 # RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile"
@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 # COPY package.json and package-lock.json into root of WORKDIR
 COPY package*.json ./
 
-# Executes commands
+# Executes commands, npm clean install
 RUN npm ci
 
 # Copies files from source to destination, in this case the root of the build context
